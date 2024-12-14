@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Chaussure{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+        <h1 class="text-center mb-5">Edit Chaussure</h1>
+
+        {{ include('Chaussure/_form.html.twig', {'button_label': 'Update'}) }}
+<br>
+ {{ include('Chaussure/_delete_form.html.twig') }}
+ <br>
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_Chaussure_index') }}" class="btn btn-outline-primary btn-primary">Back to list</a>
+        </div>
+       
+    </div>
+            
+
+{% endblock %}
+
+

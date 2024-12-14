@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chaussure index{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class=" text-success">Liste des Chaussures</h2>
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover table-responsive" id="dataTables-example">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Quantité</th>
+                                    <th>Prix</th>
+                                    <th>Photo</th>
+                                    <th>Modèle</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for Chaussure in Chaussures %}
+                                <tr>
+                                    <td>{{ Chaussure.Quantite }}</td>
+                                    <td>{{ Chaussure.Prix }}</td>
+                                    <td><img src="{{ asset('uploads/images/' ~ Chaussure.photo) }}" alt="Photo de la Chaussure" class="img-thumbnail" width="50"></td>
+                                    <td>{{ Chaussure.Modele }}</td>
+                                    <td>{{ Chaussure.description }}</td>
+                                    <td>
+                                        <a href="{{ path('app_Chaussure_show', {'id': Chaussure.id}) }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i> Modifier
+                                        </a>
+                                        <a href="{{ path('app_Chaussure_edit', {'id': Chaussure.id}) }}" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt"></i> Supprimer
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">Aucune Chaussure trouvée</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

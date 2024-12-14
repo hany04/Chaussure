@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chaussure{% endblock %}
+
+{% block content %}
+ <style>
+    /* Style général */
+    body {
+        background-color: #f8f9fa; /* Fond clair et neutre */
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    h1 {
+        text-align: center;
+        color: #343a40;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    }
+
+    /* Image */
+    .img-fluid {
+        display: block;
+        margin: 0 auto 20px;
+        max-width: 200px;
+        border-radius: 12px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Tableau */
+    .table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table th,
+    .table td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: green; /* Couleur de l'en-tête */
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .table tr:nth-child(odd) {
+        background-color: #f9f9f9; /* Lignes alternées */
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+
+    .table td {
+        font-size: 16px;
+        color: #555;
+    }
+
+    /* Boutons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        border: none;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #1e7e34;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+        background-color: #b02a37;
+    }
+
+    .d-flex {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+</style>
+
+    <div class="container">
+        <h1>Chaussure</h1>
+        <h1>          <img src="{{ asset('uploads/images/' ~ Chaussure.photo) }}" alt="Photo de la Chaussure" class="img-fluid" style="max-width: 200px; border-radius: 8px;">
+</h1>
+        <!-- Table responsive -->
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Quantité</th>
+                        <td>{{ Chaussure.Quantite }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix</th>
+                        <td>{{ Chaussure.Prix }} DT</td>
+                    </tr>
+                    {# <tr>
+                        <th>Photo</th>
+                        <td>
+                            
+                        </td>
+                    </tr> #}
+                    <tr>
+                        <th>Modèle</th>
+                        <td>{{ Chaussure.Modele }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ Chaussure.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ path('app_Chaussure_index') }}" class="btn btn-primary">Retour à la liste</a>
+            <a href="{{ path('app_Chaussure_edit', {'id': Chaussure.id}) }}" class="btn btn-success">Modifier</a>
+        </div>
+
+        {{ include('Chaussure/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
